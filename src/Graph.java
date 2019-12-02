@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
+import java.util.Queue;
 
 public class Graph<T>{
 	
@@ -51,6 +52,7 @@ public class Graph<T>{
 		Stack<T> stack = new Stack<T>();
 		stack.push(node);
 		discovered.put(node, true);
+		
 		while(!stack.isEmpty()) {
 			T current = stack.pop();
 			System.out.print(current + " , ");
@@ -65,6 +67,31 @@ public class Graph<T>{
 			}
 		}
 	}
+	
+	public void BFS(T node) {
+		Map<T, Boolean> visited = new HashMap<>();
+		Queue<T> queue = new LinkedList<T>();
+		
+		visited.put(node, true);
+		queue.add(node);
+		System.out.println("BFS: ");
+		
+		while(!queue.isEmpty()) {
+			T current = queue.poll();
+			System.out.print(current + " ");
+			
+			for( T vertex : map.keySet()) {
+				if(!visited.containsKey(vertex)) {
+					visited.put(vertex, true);
+					queue.add(vertex);
+				}
+			}
+			
+		}
+		
+	}
+	
+	
 	
 	
 	

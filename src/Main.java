@@ -19,7 +19,9 @@ public class Main {
 		g.addEdge('4', '0', true);
 		
 		System.out.println(g.getVertexCount());
-		g.DFS(0);
+		g.DFS('0');
+		System.out.println();
+		g.BFS('0');
 	}
 
 }
