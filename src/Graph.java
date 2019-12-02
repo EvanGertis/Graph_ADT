@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Stack;
 
 public class Graph<T>{
 	
@@ -40,5 +41,32 @@ public class Graph<T>{
 		
 		return count;
 	}
+	
+	public void DFS(T node) {
+		System.out.println("DFS:");
+		
+		Map<T, Boolean> finished = new HashMap<>();
+		Map<T, Boolean> discovered = new HashMap<>();
+		
+		Stack<T> stack = new Stack<T>();
+		stack.push(node);
+		discovered.put(node, true);
+		while(!stack.isEmpty()) {
+			T current = stack.pop();
+			System.out.print(current + " , ");
+			finished.put(current, true);
+			
+			for(T vertex : map.keySet()) {
+				if(!discovered.containsKey(vertex))
+				{
+					stack.push(vertex);
+					discovered.put(vertex, true);
+				}
+			}
+		}
+	}
+	
+	
+	
 
 }
