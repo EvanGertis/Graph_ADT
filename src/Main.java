@@ -22,6 +22,8 @@ public class Main {
 		g.DFS('0');
 		System.out.println();
 		g.BFS('0');
+		System.out.println();
+		g.topologicalSortDFS();
 	}
 
 }

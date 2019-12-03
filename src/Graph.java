@@ -88,12 +88,35 @@ public class Graph<T>{
 			}
 			
 		}
+	}
+	
+	public void topologicalSortDFS() {
+		Map<T, Boolean> visited = new HashMap<>();
+		Stack<T> stack = new Stack<T>();
 		
+		for(T vertex : map.keySet()) {
+			
+			if(!visited.containsKey(vertex)) {
+				topologicalSortHelper(vertex, visited, stack);
+			}
+			
+			while(!stack.isEmpty()) {
+				System.out.print(stack.pop() + "-->");
+			}
+		}
+	}
+
+	private void topologicalSortHelper(T node, Map<T, Boolean> visited, Stack<T> stack) {
+		List<T> neighbors = map.get(node);
+		visited.put(node, true);
+		
+		for(T vertex : neighbors) {
+			if(!visited.containsKey(vertex)) {
+				topologicalSortHelper(vertex, visited, stack);
+			}
+		}
+		stack.push(node);
 	}
 	
 	
-	
-	
-	
-
 }
